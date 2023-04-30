@@ -190,6 +190,7 @@ class App(tk.Tk):
         super().__init__()
         self.title("Smash picker")
         self.geometry(f"{WIDTH}x{HEIGHT}")
+        self["bg"] = BG_COLOR
         set_style()
 
     def set_main_frame(self, frame: MainFrame):
