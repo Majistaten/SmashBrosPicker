@@ -2,363 +2,517 @@
   "characters": [
     {
       "name": "Mario",
-      "image": ""
+      "image_full": "portraits/full/mario.png",
+      "image_small": "portraits/small/mario.png",
+      "image_stock": "stock_images/png/mario.png"
     },
     {
       "name": "Donkey Kong",
-      "image": ""
+      "image_full": "portraits/full/donkey_kong.png",
+      "image_small": "portraits/small/donkey_kong.png",
+      "image_stock": "stock_images/png/donkey_kong.png"
     },
     {
       "name": "Link",
-      "image": ""
+      "image_full": "portraits/full/link.png",
+      "image_small": "portraits/small/link.png",
+      "image_stock": "stock_images/png/link.png"
     },
     {
       "name": "Samus",
-      "image": ""
+      "image_full": "portraits/full/samus.png",
+      "image_small": "portraits/small/samus.png",
+      "image_stock": "stock_images/png/samus.png"
     },
     {
       "name": "Dark Samus",
-      "image": ""
+      "image_full": "portraits/full/dark_samus.png",
+      "image_small": "portraits/small/dark_samus.png",
+      "image_stock": "stock_images/png/dark_samus.png"
     },
     {
       "name": "Yoshi",
-      "image": ""
+      "image_full": "portraits/full/yoshi.png",
+      "image_small": "portraits/small/yoshi.png",
+      "image_stock": "stock_images/png/yoshi.png"
     },
     {
       "name": "Kirby",
-      "image": ""
+      "image_full": "portraits/full/kirby.png",
+      "image_small": "portraits/small/kirby.png",
+      "image_stock": "stock_images/png/kirby.png"
     },
     {
       "name": "Fox",
-      "image": ""
+      "image_full": "portraits/full/fox.png",
+      "image_small": "portraits/small/fox.png",
+      "image_stock": "stock_images/png/fox.png"
     },
     {
       "name": "Pikachu",
-      "image": ""
+      "image_full": "portraits/full/pikachu.png",
+      "image_small": "portraits/small/pikachu.png",
+      "image_stock": "stock_images/png/pikachu.png"
     },
     {
       "name": "Luigi",
-      "image": ""
+      "image_full": "portraits/full/luigi.png",
+      "image_small": "portraits/small/luigi.png",
+      "image_stock": "stock_images/png/luigi.png"
     },
     {
       "name": "Ness",
-      "image": ""
+      "image_full": "portraits/full/ness.png",
+      "image_small": "portraits/small/ness.png",
+      "image_stock": "stock_images/png/ness.png"
     },
     {
       "name": "Captain Falcon",
-      "image": ""
+      "image_full": "portraits/full/captain_falcon.png",
+      "image_small": "portraits/small/captain_falcon.png",
+      "image_stock": "stock_images/png/captain_falcon.png"
     },
     {
       "name": "Jigglypuff",
-      "image": ""
+      "image_full": "portraits/full/jigglypuff.png",
+      "image_small": "portraits/small/jigglypuff.png",
+      "image_stock": "stock_images/png/jigglypuff.png"
     },
     {
       "name": "Peach",
-      "image": ""
+      "image_full": "portraits/full/peach.png",
+      "image_small": "portraits/small/peach.png",
+      "image_stock": "stock_images/png/peach.png"
     },
     {
       "name": "Daisy",
-      "image": ""
+      "image_full": "portraits/full/daisy.png",
+      "image_small": "portraits/small/daisy.png",
+      "image_stock": "stock_images/png/daisy.png"
     },
     {
       "name": "Bowser",
-      "image": ""
+      "image_full": "portraits/full/bowser.png",
+      "image_small": "portraits/small/bowser.png",
+      "image_stock": "stock_images/png/bowser.png"
     },
     {
       "name": "Ice Climbers",
-      "image": ""
+      "image_full": "portraits/full/ice_climbers.png",
+      "image_small": "portraits/small/ice_climbers.png",
+      "image_stock": "stock_images/png/ice_climbers.png"
     },
     {
       "name": "Sheik",
-      "image": ""
+      "image_full": "portraits/full/sheik.png",
+      "image_small": "portraits/small/sheik.png",
+      "image_stock": "stock_images/png/sheik.png"
     },
     {
       "name": "Zelda",
-      "image": ""
+      "image_full": "portraits/full/zelda.png",
+      "image_small": "portraits/small/zelda.png",
+      "image_stock": "stock_images/png/zelda.png"
     },
     {
       "name": "Dr. Mario",
-      "image": ""
+      "image_full": "portraits/full/dr_mario.png",
+      "image_small": "portraits/small/dr_mario.png",
+      "image_stock": "stock_images/png/dr_mario.png"
     },
     {
       "name": "Pichu",
-      "image": ""
+      "image_full": "portraits/full/pichu.png",
+      "image_small": "portraits/small/pichu.png",
+      "image_stock": "stock_images/png/pichu.png"
     },
     {
       "name": "Falco",
-      "image": ""
+      "image_full": "portraits/full/falco.png",
+      "image_small": "portraits/small/falco.png",
+      "image_stock": "stock_images/png/falco.png"
     },
     {
       "name": "Marth",
-      "image": ""
+      "image_full": "portraits/full/marth.png",
+      "image_small": "portraits/small/marth.png",
+      "image_stock": "stock_images/png/marth.png"
     },
     {
       "name": "Lucina",
-      "image": ""
+      "image_full": "portraits/full/lucina.png",
+      "image_small": "portraits/small/lucina.png",
+      "image_stock": "stock_images/png/lucina.png"
     },
     {
       "name": "Young Link",
-      "image": ""
+      "image_full": "portraits/full/young_link.png",
+      "image_small": "portraits/small/young_link.png",
+      "image_stock": "stock_images/png/young_link.png"
     },
     {
       "name": "Ganondorf",
-      "image": ""
+      "image_full": "portraits/full/ganondorf.png",
+      "image_small": "portraits/small/ganondorf.png",
+      "image_stock": "stock_images/png/ganondorf.png"
     },
     {
       "name": "Mewtwo",
-      "image": ""
+      "image_full": "portraits/full/mewtwo.png",
+      "image_small": "portraits/small/mewtwo.png",
+      "image_stock": "stock_images/png/mewtwo.png"
     },
     {
       "name": "Roy",
-      "image": ""
+      "image_full": "portraits/full/roy.png",
+      "image_small": "portraits/small/roy.png",
+      "image_stock": "stock_images/png/roy.png"
     },
     {
       "name": "Chrom",
-      "image": ""
+      "image_full": "portraits/full/chrom.png",
+      "image_small": "portraits/small/chrom.png",
+      "image_stock": "stock_images/png/chrom.png"
     },
     {
       "name": "Mr. Game & Watch",
-      "image": ""
+      "image_full": "portraits/full/mr_game_and_watch.png",
+      "image_small": "portraits/small/mr_game_and_watch.png",
+      "image_stock": "stock_images/png/mr_game_and_watch.png"
     },
     {
       "name": "Meta Knight",
-      "image": ""
+      "image_full": "portraits/full/meta_knight.png",
+      "image_small": "portraits/small/meta_knight.png",
+      "image_stock": "stock_images/png/meta_knight.png"
     },
     {
       "name": "Pit",
-      "image": ""
+      "image_full": "portraits/full/pit.png",
+      "image_small": "portraits/small/pit.png",
+      "image_stock": "stock_images/png/pit.png"
     },
     {
       "name": "Dark Pit",
-      "image": ""
+      "image_full": "portraits/full/dark_pit.png",
+      "image_small": "portraits/small/dark_pit.png",
+      "image_stock": "stock_images/png/dark_pit.png"
     },
     {
       "name": "Zero Suit Samus",
-      "image": ""
+      "image_full": "portraits/full/zero_suit_samus.png",
+      "image_small": "portraits/small/zero_suit_samus.png",
+      "image_stock": "stock_images/png/zero_suit_samus.png"
     },
     {
       "name": "Wario",
-      "image": ""
+      "image_full": "portraits/full/wario.png",
+      "image_small": "portraits/small/wario.png",
+      "image_stock": "stock_images/png/wario.png"
     },
     {
       "name": "Snake",
-      "image": ""
+      "image_full": "portraits/full/snake.png",
+      "image_small": "portraits/small/snake.png",
+      "image_stock": "stock_images/png/snake.png"
     },
     {
       "name": "Ike",
-      "image": ""
+      "image_full": "portraits/full/ike.png",
+      "image_small": "portraits/small/ike.png",
+      "image_stock": "stock_images/png/ike.png"
     },
     {
       "name": "Pokemon Trainer",
-      "image": ""
+      "image_full": "portraits/full/pokemon_trainer.png",
+      "image_small": "portraits/small/pokemon_trainer.png",
+      "image_stock": "stock_images/png/pokemon_trainer.png"
     },
     {
       "name": "Diddy Kong",
-      "image": ""
+      "image_full": "portraits/full/diddy_kong.png",
+      "image_small": "portraits/small/diddy_kong.png",
+      "image_stock": "stock_images/png/diddy_kong.png"
     },
     {
       "name": "Lucas",
-      "image": ""
+      "image_full": "portraits/full/lucas.png",
+      "image_small": "portraits/small/lucas.png",
+      "image_stock": "stock_images/png/lucas.png"
     },
     {
       "name": "Sonic",
-      "image": ""
+      "image_full": "portraits/full/sonic.png",
+      "image_small": "portraits/small/sonic.png",
+      "image_stock": "stock_images/png/sonic.png"
     },
     {
       "name": "King Dedede",
-      "image": ""
+      "image_full": "portraits/full/king_dedede.png",
+      "image_small": "portraits/small/king_dedede.png",
+      "image_stock": "stock_images/png/king_dedede.png"
     },
     {
       "name": "Olimar",
-      "image": ""
+      "image_full": "portraits/full/olimar.png",
+      "image_small": "portraits/small/olimar.png",
+      "image_stock": "stock_images/png/olimar.png"
     },
     {
       "name": "Lucario",
-      "image": ""
+      "image_full": "portraits/full/lucario.png",
+      "image_small": "portraits/small/lucario.png",
+      "image_stock": "stock_images/png/lucario.png"
     },
     {
       "name": "R.O.B.",
-      "image": ""
+      "image_full": "portraits/full/rob.png",
+      "image_small": "portraits/small/rob.png",
+      "image_stock": "stock_images/png/rob.png"
     },
     {
       "name": "Toon Link",
-      "image": ""
+      "image_full": "portraits/full/toon_link.png",
+      "image_small": "portraits/small/toon_link.png",
+      "image_stock": "stock_images/png/toon_link.png"
     },
     {
       "name": "Wolf",
-      "image": ""
+      "image_full": "portraits/full/wolf.png",
+      "image_small": "portraits/small/wolf.png",
+      "image_stock": "stock_images/png/wolf.png"
     },
     {
       "name": "Villager",
-      "image": ""
+      "image_full": "portraits/full/villager.png",
+      "image_small": "portraits/small/villager.png",
+      "image_stock": "stock_images/png/villager.png"
     },
     {
       "name": "Mega Man",
-      "image": ""
+      "image_full": "portraits/full/mega_man.png",
+      "image_small": "portraits/small/mega_man.png",
+      "image_stock": "stock_images/png/mega_man.png"
     },
     {
       "name": "Wii Fit Trainer",
-      "image": ""
+      "image_full": "portraits/full/wii_fit_trainer.png",
+      "image_small": "portraits/small/wii_fit_trainer.png",
+      "image_stock": "stock_images/png/wii_fit_trainer.png"
     },
     {
       "name": "Rosalina & Luma",
-      "image": ""
+      "image_full": "portraits/full/rosalina_and_luma.png",
+      "image_small": "portraits/small/rosalina_and_luma.png",
+      "image_stock": "stock_images/png/rosalina_and_luma.png"
     },
     {
       "name": "Little Mac",
-      "image": ""
+      "image_full": "portraits/full/little_mac.png",
+      "image_small": "portraits/small/little_mac.png",
+      "image_stock": "stock_images/png/little_mac.png"
     },
     {
       "name": "Greninja",
-      "image": ""
+      "image_full": "portraits/full/greninja.png",
+      "image_small": "portraits/small/greninja.png",
+      "image_stock": "stock_images/png/greninja.png"
     },
     {
-      "name": "Mii Brawler",
-      "image": ""
-    },
-    {
-      "name": "Mii Swordfighter",
-      "image": ""
-    },
-    {
-      "name": "Mii Gunner",
-      "image": ""
+      "name": "Mii Fighter",
+      "image_full": "portraits/full/mii_swordfighter.png",
+      "image_small": "portraits/small/mii_swordfighter.png",
+      "image_stock": "stock_images/png/mii_swordfighter.png"
     },
     {
       "name": "Palutena",
-      "image": ""
+      "image_full": "portraits/full/palutena.png",
+      "image_small": "portraits/small/palutena.png",
+      "image_stock": "stock_images/png/palutena.png"
     },
     {
       "name": "Pac-Man",
-      "image": ""
+      "image_full": "portraits/full/pac_man.png",
+      "image_small": "portraits/small/pac_man.png",
+      "image_stock": "stock_images/png/pac_man.png"
     },
     {
       "name": "Robin",
-      "image": ""
+      "image_full": "portraits/full/robin.png",
+      "image_small": "portraits/small/robin.png",
+      "image_stock": "stock_images/png/robin.png"
     },
     {
       "name": "Shulk",
-      "image": ""
+      "image_full": "portraits/full/shulk.png",
+      "image_small": "portraits/small/shulk.png",
+      "image_stock": "stock_images/png/shulk.png"
     },
     {
       "name": "Bowser Jr.",
-      "image": ""
+      "image_full": "portraits/full/bowser_jr.png",
+      "image_small": "portraits/small/bowser_jr.png",
+      "image_stock": "stock_images/png/bowser_jr.png"
     },
     {
       "name": "Duck Hunt",
-      "image": ""
+      "image_full": "portraits/full/duck_hunt.png",
+      "image_small": "portraits/small/duck_hunt.png",
+      "image_stock": "stock_images/png/duck_hunt.png"
     },
     {
       "name": "Ryu",
-      "image": ""
+      "image_full": "portraits/full/ryu.png",
+      "image_small": "portraits/small/ryu.png",
+      "image_stock": "stock_images/png/ryu.png"
     },
     {
       "name": "Ken",
-      "image": ""
+      "image_full": "portraits/full/ken.png",
+      "image_small": "portraits/small/ken.png",
+      "image_stock": "stock_images/png/ken.png"
     },
     {
       "name": "Cloud",
-      "image": ""
+      "image_full": "portraits/full/cloud.png",
+      "image_small": "portraits/small/cloud.png",
+      "image_stock": "stock_images/png/cloud.png"
     },
     {
       "name": "Corrin",
-      "image": ""
+      "image_full": "portraits/full/corrin.png",
+      "image_small": "portraits/small/corrin.png",
+      "image_stock": "stock_images/png/corrin.png"
     },
     {
       "name": "Bayonetta",
-      "image": ""
+      "image_full": "portraits/full/bayonetta.png",
+      "image_small": "portraits/small/bayonetta.png",
+      "image_stock": "stock_images/png/bayonetta.png"
     },
     {
       "name": "Inkling",
-      "image": ""
+      "image_full": "portraits/full/inkling.png",
+      "image_small": "portraits/small/inkling.png",
+      "image_stock": "stock_images/png/inkling.png"
     },
     {
       "name": "Ridley",
-      "image": ""
+      "image_full": "portraits/full/ridley.png",
+      "image_small": "portraits/small/ridley.png",
+      "image_stock": "stock_images/png/ridley.png"
     },
     {
       "name": "Simon",
-      "image": ""
+      "image_full": "portraits/full/simon.png",
+      "image_small": "portraits/small/simon.png",
+      "image_stock": "stock_images/png/simon.png"
     },
     {
       "name": "Richter",
-      "image": ""
+      "image_full": "portraits/full/richter.png",
+      "image_small": "portraits/small/richter.png",
+      "image_stock": "stock_images/png/richter.png"
     },
     {
-      "name": "King K. Rool",
-      "image": ""
+      "name": "King K.Rool",
+      "image_full": "portraits/full/king_k_rool.png",
+      "image_small": "portraits/small/king_k_rool.png",
+      "image_stock": "stock_images/png/king_k_rool.png"
     },
     {
       "name": "Isabelle",
-      "image": ""
+      "image_full": "portraits/full/isabelle.png",
+      "image_small": "portraits/small/isabelle.png",
+      "image_stock": "stock_images/png/isabelle.png"
     },
     {
       "name": "Incineroar",
-      "image": ""
+      "image_full": "portraits/full/incineroar.png",
+      "image_small": "portraits/small/incineroar.png",
+      "image_stock": "stock_images/png/incineroar.png"
     },
     {
       "name": "Piranha Plant",
-      "image": ""
+      "image_full": "portraits/full/piranha_plant.png",
+      "image_small": "portraits/small/piranha_plant.png",
+      "image_stock": "stock_images/png/piranha_plant.png"
     },
     {
       "name": "Joker",
-      "image": ""
+      "image_full": "portraits/full/joker.png",
+      "image_small": "portraits/small/joker.png",
+      "image_stock": "stock_images/png/joker.png"
     },
     {
       "name": "Hero",
-      "image": ""
+      "image_full": "portraits/full/hero.png",
+      "image_small": "portraits/small/hero.png",
+      "image_stock": "stock_images/png/hero.png"
     },
     {
       "name": "Banjo & Kazooie",
-      "image": ""
+      "image_full": "portraits/full/banjo_and_kazooie.png",
+      "image_small": "portraits/small/banjo_and_kazooie.png",
+      "image_stock": "stock_images/png/banjo_and_kazooie.png"
     },
     {
       "name": "Terry",
-      "image": ""
+      "image_full": "portraits/full/terry.png",
+      "image_small": "portraits/small/terry.png",
+      "image_stock": "stock_images/png/terry.png"
     },
     {
       "name": "Byleth",
-      "image": ""
+      "image_full": "portraits/full/byleth.png",
+      "image_small": "portraits/small/byleth.png",
+      "image_stock": "stock_images/png/byleth.png"
     },
     {
       "name": "Min Min",
-      "image": ""
+      "image_full": "portraits/full/min_min.png",
+      "image_small": "portraits/small/min_min.png",
+      "image_stock": "stock_images/png/min_min.png"
     },
     {
       "name": "Steve",
-      "image": ""
-    },
-    {
-      "name": "Alex",
-      "image": ""
-    },
-    {
-      "name": "Zombie",
-      "image": ""
-    },
-    {
-      "name": "Enderman",
-      "image": ""
+      "image_full": "portraits/full/steve.png",
+      "image_small": "portraits/small/steve.png",
+      "image_stock": "stock_images/png/steve.png"
     },
     {
       "name": "Sephiroth",
-      "image": ""
+      "image_full": "portraits/full/sephiroth.png",
+      "image_small": "portraits/small/sephiroth.png",
+      "image_stock": "stock_images/png/sephiroth.png"
     },
     {
       "name": "Pyra",
-      "image": ""
+      "image_full": "portraits/full/pyra.png",
+      "image_small": "portraits/small/pyra.png",
+      "image_stock": "stock_images/png/pyra.png"
     },
     {
       "name": "Mythra",
-      "image": ""
+      "image_full": "portraits/full/mythra.png",
+      "image_small": "portraits/small/mythra.png",
+      "image_stock": "stock_images/png/mythra.png"
     },
     {
       "name": "Kazuya",
-      "image": ""
+      "image_full": "portraits/full/kazuya.png",
+      "image_small": "portraits/small/kazuya.png",
+      "image_stock": "stock_images/png/kazuya.png"
     },
     {
       "name": "Sora",
-      "image": ""
+      "image_full": "portraits/full/sora.png",
+      "image_small": "portraits/small/sora.png",
+      "image_stock": "stock_images/png/sora.png"
     }
   ]
 }
+
+
+
+
