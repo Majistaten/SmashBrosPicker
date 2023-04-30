@@ -77,7 +77,6 @@ class SetupFrame(ttk.Frame):
 
     def setup(self):
         self.pack(fill=tk.BOTH, expand=True)
-        self.event_generate("<<OnSetup>>")
 
     def __setup_widgets(self):
         self.bottom_frame = ttk.Frame(self)
@@ -113,6 +112,8 @@ class SetupFrame(ttk.Frame):
 
     def init_entries(self, player_numbers: tk.IntVar):
         self.player_numbers = player_numbers
+        scale_label = ttk.Label(self.settings_frame, text="Number of players:")
+        scale_label.grid(row=len(self.checkboxes) + 5, column=0, columnspan=2, padx=5, pady=15, sticky=tk.NSEW)
         self.player_slider = tk.Scale(self.settings_frame,
                                       from_=1,
                                       to=4,
@@ -128,7 +129,7 @@ class SetupFrame(ttk.Frame):
                                       troughcolor=BUTTON_COLOR,
                                       relief=tk.FLAT,
                                       bd=0)
-        self.player_slider.grid(row=len(self.checkboxes) + 5, column=0, columnspan=2, padx=5, pady=15, sticky=tk.NSEW)
+        self.player_slider.grid(row=len(self.checkboxes) + 5, column=1, columnspan=2, padx=5, pady=15, sticky=tk.NSEW)
 
         for i in range(4):
             ttk.Label(self.settings_frame, text=f"Player {i + 1} Name:") \
@@ -246,7 +247,14 @@ def set_style():
                     foreground=FG_COLOR)
     style.configure("TCheckbutton", font=("Arial", 12),
                     background=BG_COLOR,
-                    foreground=FG_COLOR)
+                    foreground=FG_COLOR,
+                    borderwidth=0,
+                    focuscolor=BG_COLOR,
+                    padding=5,
+                    width=15)
+    style.map("TCheckbutton",
+              background=[("active", HOVER_COLOR)],
+              foreground=[("active", FG_COLOR)])
     style.configure("TRadiobutton", font=("Arial", 12),
                     background=BG_COLOR,
                     foreground=FG_COLOR)
