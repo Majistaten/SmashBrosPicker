@@ -1,7 +1,6 @@
 import os
 import tkinter as tk
 from pathlib import Path
-from tkinter import ttk
 from tkinter import PhotoImage
 
 from src.model.character import Character
@@ -36,7 +35,3 @@ class SelectedCharacterCard(tk.Frame):
         self.label.pack(side=tk.BOTTOM)
 
         self.configure(borderwidth=0)
-
-    def reset(self):
-        self.configure(borderwidth=0)
-        self.configure(highlightbackground="blue", highlightthickness=2, padx=5, pady=5)
