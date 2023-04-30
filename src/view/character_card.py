@@ -5,6 +5,7 @@ from tkinter import PhotoImage
 
 from src.model.character import Character
 
+IMAGES = os.path.join(os.path.dirname(__file__), '..', 'resources', 'smash-images')
 BG_COLOR = "#0D1117"
 CARD_COLOR = "#282828"
 HOVER_COLOR = "#3c3c3c"
@@ -12,13 +13,12 @@ CARD_SELECTED_COLOR = "#0D1117"
 
 
 class CharacterCard(tk.Frame):
-    IMAGES = os.path.join(os.path.dirname(__file__), '..', 'resources', 'smash-images')
     character: Character
     selected: bool
     label: tk.Label
     image: PhotoImage
 
-    def __init__(self, master, character, *args, **kwargs):
+    def __init__(self, master, character: Character, *args, **kwargs):
         super().__init__(master, *args, **kwargs)
 
         self.character = character
@@ -26,12 +26,12 @@ class CharacterCard(tk.Frame):
         self["bg"] = BG_COLOR
         self.configure(highlightbackground=BG_COLOR, bg=BG_COLOR, highlightthickness=2, padx=5, pady=5)
 
-        if Path(self.IMAGES + "/" + self.character.image_full).is_file():
-            self.image = PhotoImage(file=self.IMAGES + "/" + self.character.image_full)
+        if Path(IMAGES + "/" + self.character.image_full).is_file():
+            self.image = PhotoImage(file=IMAGES + "/" + self.character.image_full)
         else:
-            self.image = PhotoImage(file=self.IMAGES + "/unknown100x100.png")
+            self.image = PhotoImage(file=IMAGES + "/unknown100x100.png")
 
-        self.label = tk.Label(self, image=self.image, bg=CARD_COLOR)
+        self.label = tk.Label(self, image=image, bg=CARD_COLOR)
         self.label.pack()
 
         self.configure(borderwidth=0)
