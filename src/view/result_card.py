@@ -14,12 +14,13 @@ IMAGES = os.path.join(os.path.dirname(__file__), '..', 'resources', 'smash-image
 
 
 class ResultCard(tk.Frame):
-    player_cards = {}
-    selected_player: Player = None
     label: tk.Label
 
     def __init__(self, master, label_text: str, players: list[Player], *args, **kwargs):
         super().__init__(master, *args, **kwargs)
+
+        self.player_cards = {}
+        self.selected_player = None
 
         self["bg"] = BG_COLOR
         self.label = tk.Label(self, text=label_text, bg=BG_COLOR, fg="white", font=("Arial", 20))
@@ -30,7 +31,7 @@ class ResultCard(tk.Frame):
     def __generate_cards(self, players: list[Player]):
         for i, player in enumerate(players):
             card = self.PlayerCard(self, player)
-            card.grid(row=i+1, column=0, padx=5, pady=5)
+            card.grid(row=i + 1, column=0, padx=5, pady=5)
             card.bind("<<OnClicked>>", self.set_player)
             self.player_cards[player.name] = card
 
@@ -57,12 +58,12 @@ class ResultCard(tk.Frame):
         label: tk.Label
         image: PhotoImage
         player_label: tk.Label
-        clicked: bool = False
 
         def __init__(self, master, player: Player, character: Character = None, *args, **kwargs):
             super().__init__(master, *args, **kwargs)
             self.character = character
             self.player = player
+            self.clicked: bool = False
 
             self.configure(highlightbackground=BG_COLOR, bg=BG_COLOR, highlightthickness=2, padx=5, pady=5)
 
