@@ -80,10 +80,10 @@ class DataModel:
         return result
 
     def select_character_for_player(self, player, random_value: int) -> Character:
-        if self.settings['liked_characters'].get() and player is self.loser:
+        if self.settings['liked_characters'].get() and self.player_numbers.get() > 1 and player is self.loser:
             return random.choice(player.liked_characters)
 
-        if self.settings['disliked_characters'].get() and player is self.winner:
+        if self.settings['disliked_characters'].get() and self.player_numbers.get() > 1 and player is self.winner:
             print(f"{player.name} disliked characters: {player.disliked_characters}")
             if random_value < self.dislike_scale.get():
                 return random.choice(self.characters)
@@ -94,7 +94,6 @@ class DataModel:
             return random.choice(player.liked_characters)
         else:
             return random.choice(self.characters)
-
 
     def set_winner(self, winner: Player):
         winner.score += 1

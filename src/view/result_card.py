@@ -27,10 +27,10 @@ class CharacterCard(tk.Frame):
         self["bg"] = BG_COLOR
         self.configure(highlightbackground=BG_COLOR, bg=BG_COLOR, highlightthickness=2, padx=5, pady=5)
 
-        if Path(IMAGES + "/" + self.character.image_small).is_file():
-            self.image = PhotoImage(file=IMAGES + "/" + self.character.image_small)
+        if Path(IMAGES + "/" + self.character.image_stock).is_file():
+            self.image = PhotoImage(file=IMAGES + "/" + self.character.image_stock)
         else:
-            print("Image not found: " + IMAGES + "/" + self.character.image_small)
+            print("Image not found: " + IMAGES + "/" + self.character.image_stock)
             self.image = PhotoImage(file=IMAGES + "/unknown100x100.png")
 
         self.canvas = tk.Canvas(self,

@@ -44,7 +44,7 @@ class MainController:
         self.forget_visible()
         self.char_select_frame = CharSelectFrame(master=self.view)
         self.char_select_frame.init_character_cards(self.model.get_characters())
-        self.char_select_frame.bind("<<OnBack>>", lambda _: self.show_setup_frame())
+        self.char_select_frame.bind("<<OnExit>>", lambda _: self.on_exit())
         self.char_select_frame.bind("<<OnContinueChar>>", lambda _: self.continue_char_selection())
         self.view.set_char_select_frame(self.char_select_frame)
 
@@ -52,6 +52,7 @@ class MainController:
         self.forget_visible()
         self.roll_frame = RollFrame(master=self.view)
         self.roll_frame.bind("<<OnRoll>>", lambda _: self.roll_selection())
+        self.roll_frame.generate_cards(self.model.get_players())
         self.view.set_roll_frame(self.roll_frame)
 
     def on_exit(self):
@@ -115,4 +116,5 @@ class MainController:
             self.setup_roll_frame()
 
     def roll_selection(self):
-        pass
+        characters = self.model.pick_random_characters()
+        self.roll_frame.update_frame(characters)

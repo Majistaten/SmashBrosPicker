@@ -3,7 +3,9 @@ import tkinter.ttk as ttk
 from tkinter import messagebox
 
 from src.model.character import Character
+from src.model.player import Player
 from src.view.character_card import CharacterCard
+from src.view.selection_card import SelectionCard
 
 WIDTH = 1800
 HEIGHT = 1200
@@ -233,16 +235,16 @@ class CharSelectFrame(ttk.Frame):
         self.title_label.pack(pady=10, padx=10, side=tk.TOP)
 
         self.back_button = ttk.Button(self.bottom_frame,
-                                      text="Back",
-                                      command=self.__on_back)
+                                      text="Exit",
+                                      command=self.__on_exit)
         self.back_button.pack(pady=10, padx=10, side=tk.LEFT)
         self.continue_button = ttk.Button(self.bottom_frame,
                                           text="Continue",
                                           command=self.__on_continue)
         self.continue_button.pack(pady=10, padx=10, side=tk.RIGHT)
 
-    def __on_back(self):
-        self.event_generate("<<OnBack>>")
+    def __on_exit(self):
+        self.event_generate("<<OnExit>>")
 
     def __on_continue(self):
         self.event_generate("<<OnContinueChar>>")
@@ -267,11 +269,13 @@ class CharSelectFrame(ttk.Frame):
 
 class RollFrame(ttk.Frame):
     bottom_frame: ttk.Frame
+    card_frame: ttk.Frame
     roll_button: ttk.Button
     top_frame: ttk.Frame
     title_label: ttk.Label
     roll_label: ttk.Label
     score_label: ttk.Label
+    game_cards = {}
 
     def __init__(self, master=None, **kwargs):
         super().__init__(master, **kwargs)
@@ -284,8 +288,10 @@ class RollFrame(ttk.Frame):
     def __setup_widgets(self):
         self.top_frame = ttk.Frame(self)
         self.bottom_frame = ttk.Frame(self)
+        self.card_frame = ttk.Frame(self)
         self.top_frame.pack(side=tk.TOP, anchor=tk.CENTER, expand=True)
         self.bottom_frame.pack(side=tk.BOTTOM, anchor=tk.CENTER, expand=True)
+        self.card_frame.pack(anchor=tk.CENTER, expand=True)
 
         self.title_label = ttk.Label(self.top_frame, text="Rolling", font=("Arial", 20, "bold"))
         self.title_label.pack(pady=10, padx=10, side=tk.TOP)
@@ -301,9 +307,15 @@ class RollFrame(ttk.Frame):
     def __on_roll(self):
         self.event_generate("<<OnRoll>>")
 
-    def update_frame(self, player_name: str):
-        self.title_label["text"] = f"{player_name}, press the button to roll!"
-        self.roll_label["text"] = "Press the button to roll!"
+    def generate_cards(self, players: list[Player]):
+        for player in players:
+            card = SelectionCard(self.card_frame, player)
+            card.pack(side=tk.LEFT, padx=10, pady=10)
+            self.game_cards[player.name] = card
+
+    def update_frame(self, selections: dict[str, Character]):
+        for player_name, character in selections.items():
+            self.game_cards[player_name].set_character(character)
 
 
 class App(tk.Tk):
