@@ -304,15 +304,18 @@ class RollFrame(ttk.Frame):
         selection_frame_left = ttk.Frame(self.card_frame)
         selection_frame_right = ttk.Frame(self.card_frame)
 
+        half_players = len(players) // 2 + len(players) % 2
+
         for i, player in enumerate(players):
             card = SelectionCard(self.card_frame, player)
 
-            if i < len(players) // 2:
+            if i < half_players:
                 selection_frame = selection_frame_left
             else:
                 selection_frame = selection_frame_right
 
-            card.grid(row=i % (len(players) // 2), column=0, in_=selection_frame)
+            row = i % half_players
+            card.grid(row=row, column=0, in_=selection_frame)
             self.game_cards[player.name] = card
 
         selection_frame_left.grid(row=0, column=1, rowspan=2)
