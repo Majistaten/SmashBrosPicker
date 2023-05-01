@@ -5,6 +5,7 @@ from tkinter import messagebox
 from src.model.character import Character
 from src.model.player import Player
 from src.view.character_card import CharacterCard
+from src.view.result_card import ResultCard
 from src.view.selection_card import SelectionCard
 
 WIDTH = 1800
@@ -271,9 +272,9 @@ class RollFrame(ttk.Frame):
     bottom_frame: ttk.Frame
     card_frame: ttk.Frame
     roll_button: ttk.Button
-    top_frame: ttk.Frame
+    winner_card: ResultCard = None
+    loser_card: ResultCard = None
     title_label: ttk.Label
-    roll_label: ttk.Label
     score_label: ttk.Label
     game_cards = {}
 
@@ -283,21 +284,13 @@ class RollFrame(ttk.Frame):
         self.__setup_widgets()
 
     def setup(self):
-        self.pack(fill=tk.BOTH, expand=True)
+        self.pack(fill=tk.BOTH, expand=True, anchor=tk.CENTER)
 
     def __setup_widgets(self):
-        self.top_frame = ttk.Frame(self)
         self.bottom_frame = ttk.Frame(self)
         self.card_frame = ttk.Frame(self)
-        self.top_frame.pack(side=tk.TOP, anchor=tk.CENTER, expand=True)
+        self.card_frame.pack(expand=True, anchor=tk.CENTER)
         self.bottom_frame.pack(side=tk.BOTTOM, anchor=tk.CENTER, expand=True)
-        self.card_frame.pack(anchor=tk.CENTER, expand=True)
-
-        self.title_label = ttk.Label(self.top_frame, text="Rolling", font=("Arial", 20, "bold"))
-        self.title_label.pack(pady=10, padx=10, side=tk.TOP)
-
-        self.roll_label = ttk.Label(self.top_frame, text="Press the button to roll!", font=("Arial", 16))
-        self.roll_label.pack(pady=10, padx=10, side=tk.TOP)
 
         self.roll_button = ttk.Button(self.bottom_frame,
                                       text="Roll",
@@ -308,12 +301,52 @@ class RollFrame(ttk.Frame):
         self.event_generate("<<OnRoll>>")
 
     def generate_cards(self, players: list[Player]):
-        for player in players:
+        selection_frame_left = ttk.Frame(self.card_frame)
+        selection_frame_right = ttk.Frame(self.card_frame)
+
+        for i, player in enumerate(players):
             card = SelectionCard(self.card_frame, player)
-            card.pack(side=tk.LEFT, padx=10, pady=10)
+
+            if i < len(players) // 2:
+                selection_frame = selection_frame_left
+            else:
+                selection_frame = selection_frame_right
+
+            card.grid(row=i % (len(players) // 2), column=0, in_=selection_frame)
             self.game_cards[player.name] = card
 
+        selection_frame_left.grid(row=0, column=1, rowspan=2)
+        selection_frame_right.grid(row=0, column=2, rowspan=2)
+
+    def insert_winner_card(self, players: list[Player]):
+        self.winner_card = ResultCard(self.card_frame, "Winner", players)
+        self.winner_card.grid(row=0, column=0, rowspan=2, sticky=tk.W)
+
+    def insert_loser_card(self, players: list[Player]):
+        self.loser_card = ResultCard(self.card_frame, "Loser", players)
+        self.loser_card.grid(row=0, column=3, rowspan=2, sticky=tk.E)
+
+    def get_winner(self) -> Player:
+        if self.winner_card is None:
+            return None
+        winner = self.winner_card.get_selected_player()
+        print("Winner")
+        print(winner)
+        return winner
+
+    def get_loser(self) -> Player:
+        if self.loser_card is None:
+            return None
+        loser = self.loser_card.get_selected_player()
+        print("Loser")
+        print(loser)
+        return loser
+
     def update_frame(self, selections: dict[str, Character]):
+        if self.winner_card is not None:
+            self.winner_card.update_frame(selections)
+        if self.loser_card is not None:
+            self.loser_card.update_frame(selections)
         for player_name, character in selections.items():
             self.game_cards[player_name].set_character(character)
 

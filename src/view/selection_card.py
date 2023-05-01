@@ -30,7 +30,7 @@ class SelectionCard(tk.Frame):
 
         self.__load_image()
 
-        self.label = tk.Label(self, image=self.image)
+        self.label = tk.Label(self, image=self.image, bg=BG_COLOR)
         self.name_label = tk.Label(self,
                                    text=player.name + " - score: " + str(player.score),
                                    bg=BG_COLOR,

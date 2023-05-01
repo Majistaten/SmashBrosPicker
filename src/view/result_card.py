@@ -1,72 +1,104 @@
 import os
-import textwrap
 import tkinter as tk
 from pathlib import Path
 from tkinter import PhotoImage
 
 from src.model.character import Character
+from src.model.player import Player
 
-IMAGES = os.path.join(os.path.dirname(__file__), '..', 'resources', 'smash-images')
 BG_COLOR = "#0D1117"
 CARD_COLOR = "#282828"
 HOVER_COLOR = "#3c3c3c"
 CARD_SELECTED_COLOR = "#0D1117"
+IMAGES = os.path.join(os.path.dirname(__file__), '..', 'resources', 'smash-images')
 
 
-class CharacterCard(tk.Frame):
-    character: Character
-    selected: bool
-    image: PhotoImage
-    canvas: tk.Canvas
+class ResultCard(tk.Frame):
+    player_cards = {}
+    selected_player: Player = None
+    label: tk.Label
 
-    def __init__(self, master, character: Character, *args, **kwargs):
+    def __init__(self, master, label_text: str, players: list[Player], *args, **kwargs):
         super().__init__(master, *args, **kwargs)
 
-        self.character = character
-        self.selected = False
         self["bg"] = BG_COLOR
-        self.configure(highlightbackground=BG_COLOR, bg=BG_COLOR, highlightthickness=2, padx=5, pady=5)
+        self.label = tk.Label(self, text=label_text, bg=BG_COLOR, fg="white", font=("Arial", 20))
+        self.label.grid(row=0, column=0, columnspan=2, sticky=tk.EW)
 
-        if Path(IMAGES + "/" + self.character.image_stock).is_file():
-            self.image = PhotoImage(file=IMAGES + "/" + self.character.image_stock)
-        else:
-            print("Image not found: " + IMAGES + "/" + self.character.image_stock)
-            self.image = PhotoImage(file=IMAGES + "/unknown100x100.png")
+        self.__generate_cards(players)
 
-        self.canvas = tk.Canvas(self,
-                                bg=CARD_COLOR,
-                                width=self.image.width(),
-                                height=self.image.height(),
-                                highlightthickness=0)
-        self.canvas.create_image(0, 0, anchor=tk.NW, image=self.image)
-        wrapped_text = textwrap.wrap(self.character.name, width=10, break_long_words=False)
-        y_position = 5
-        for line in wrapped_text:
-            self.canvas.create_text(5, y_position, anchor=tk.NW, text=line, fill="white", font=("Arial", 12, "bold"))
-            y_position += 15
-        self.canvas.pack()
+    def __generate_cards(self, players: list[Player]):
+        for i, player in enumerate(players):
+            card = self.PlayerCard(self, player)
+            card.grid(row=i+1, column=0, padx=5, pady=5)
+            card.bind("<<OnClicked>>", self.set_player)
+            self.player_cards[player.name] = card
 
-        self.configure(borderwidth=0)
+    def set_player(self, event):
+        for card in self.player_cards.values():
+            if card.clicked:
+                card.configure(relief="solid", highlightbackground="blue")
+                self.selected_player = card.player
+                card.clicked = False
+                card.configure(bg=CARD_SELECTED_COLOR)
+            else:
+                card.configure(relief="flat", highlightbackground=BG_COLOR)
 
-        self.canvas.bind("<Enter>", self.on_hover)
-        self.canvas.bind("<Leave>", self.on_leave)
-        self.canvas.bind("<Button-1>", self.on_click)
+    def update_frame(self, selections: dict[str, Character]):
+        for player_name, character in selections.items():
+            self.player_cards[player_name].set_character(character)
 
-    def on_hover(self, event):
-        if not self.selected:
-            self.canvas.config(bg=HOVER_COLOR)
+    def get_selected_player(self) -> Player:
+        return self.selected_player
 
-    def on_leave(self, event):
-        if not self.selected:
-            self.canvas.config(bg=CARD_COLOR)
+    class PlayerCard(tk.Frame):
+        character: Character
+        player: Player
+        label: tk.Label
+        image: PhotoImage
+        player_label: tk.Label
+        clicked: bool = False
 
-    def on_click(self, event):
-        self.selected = not self.selected
-        if self.selected:
-            self.configure(relief="solid", highlightbackground="blue", bg=CARD_SELECTED_COLOR)
-        else:
-            self.configure(relief="flat", highlightbackground=BG_COLOR, bg=CARD_COLOR)
+        def __init__(self, master, player: Player, character: Character = None, *args, **kwargs):
+            super().__init__(master, *args, **kwargs)
+            self.character = character
+            self.player = player
 
-    def reset(self):
-        self.selected = False
-        self.configure(relief="flat", highlightbackground=BG_COLOR, bg=CARD_COLOR)
+            self.configure(highlightbackground=BG_COLOR, bg=BG_COLOR, highlightthickness=2, padx=5, pady=5)
+
+            self.__load_image()
+
+            self.label = tk.Label(self, image=self.image, bg=BG_COLOR)
+            self.player_label = tk.Label(self,
+                                         text=player.name,
+                                         bg=BG_COLOR,
+                                         fg="white",
+                                         font=("Arial", 20))
+            self.player_label.pack(side=tk.TOP)
+            self.label.pack(side=tk.BOTTOM)
+
+            self.label.bind("<Button-1>", self.on_click)
+            self.player_label.bind("<Button-1>", self.on_click)
+
+        def on_click(self, event):
+            self.clicked = True
+            self.event_generate("<<OnClicked>>")
+
+        def __load_image(self):
+            if self.character is not None:
+                if Path(IMAGES + "/" + self.character.image_stock).is_file():
+                    self.image = PhotoImage(file=IMAGES + "/" + self.character.image_stock)
+                else:
+                    self.image = PhotoImage(file=IMAGES + "/unknown200x200.png")
+            else:
+                print("Character is None")
+                self.image = PhotoImage(file=IMAGES + "/unknown200x200.png")
+
+        def set_character(self, character: Character):
+            self.character = character
+            self.__load_image()
+            self.__update_character_label()
+            self.label.configure(image=self.image)
+
+        def __update_character_label(self):
+            self.player_label.configure(text=self.player.name)

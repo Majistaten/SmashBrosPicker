@@ -15,8 +15,8 @@ class DataModel:
     players = []
     characters = []
     settings = {}
-    winner: Player
-    loser: Player
+    winner: Player = None
+    loser: Player = None
 
     def __init__(self):
         self.characters = self.load_characters()
@@ -81,16 +81,21 @@ class DataModel:
 
     def select_character_for_player(self, player, random_value: int) -> Character:
         if self.settings['liked_characters'].get() and self.player_numbers.get() > 1 and player is self.loser:
-            return random.choice(player.liked_characters)
+            if random_value <= self.like_scale.get():
+                print(f"{player.name} - liked characters")
+                return random.choice(player.liked_characters)
+            else:
+                return random.choice(self.characters)
 
         if self.settings['disliked_characters'].get() and self.player_numbers.get() > 1 and player is self.winner:
-            print(f"{player.name} disliked characters: {player.disliked_characters}")
-            if random_value < self.dislike_scale.get():
-                return random.choice(self.characters)
-            else:
+            if random_value <= self.dislike_scale.get():
+                print(f"{player.name} - disliked characters")
                 return random.choice(player.disliked_characters)
+            else:
+                return random.choice(self.characters)
 
-        if self.settings['liked_characters'].get() and random_value < self.like_scale.get():
+        print(f"{player.name} - random characters")
+        if self.settings['liked_characters'].get() and random_value <= self.like_scale.get():
             return random.choice(player.liked_characters)
         else:
             return random.choice(self.characters)
@@ -98,9 +103,11 @@ class DataModel:
     def set_winner(self, winner: Player):
         winner.score += 1
         self.winner = winner
+        print(f"Winner: {winner.name} with {winner.score} points")
 
     def set_loser(self, loser: Player):
         self.loser = loser
+        print(f"Loser: {loser.name}")
 
     def get_settings(self) -> dict:
         return self.settings
