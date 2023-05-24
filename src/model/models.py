@@ -111,14 +111,17 @@ class DataModel:
             print(f"{player.name} - normal")
             return random.choice(self.characters)
 
-    def set_winner(self, winner: Player):
-        winner.score += 1
+    def set_winner(self, winner: Player | None):
         self.winner = winner
-        print(f"Winner: {winner.name} with {winner.score} points")
+        if self.winner is not None:
+            winner.score += 1
+            print(f"Winner: {winner.name} with {winner.score} points")
 
-    def set_loser(self, loser: Player):
+    def set_loser(self, loser: Player | None):
         self.loser = loser
-        print(f"Loser: {loser.name}")
+        if self.loser is not None:
+            loser.score -= 1
+            print(f"Loser: {loser.name}")
 
     def get_settings(self) -> dict:
         return self.settings

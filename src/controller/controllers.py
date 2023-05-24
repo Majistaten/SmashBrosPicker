@@ -129,9 +129,7 @@ class MainController:
     def roll_selection(self):
         winner = self.roll_frame.get_winner()
         loser = self.roll_frame.get_loser()
-        if loser is not None:
-            self.model.set_loser(loser)
-        if winner is not None:
-            self.model.set_winner(winner)
+        self.model.set_loser(loser)
+        self.model.set_winner(winner)
         characters = self.model.pick_random_characters()
         self.roll_frame.update_frame(characters)
