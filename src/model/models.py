@@ -6,6 +6,8 @@ import random
 from src.model.character import Character
 from src.model.player import Player
 
+NORMAL_DECREASE = 30
+
 
 class DataModel:
     RESOURCES = os.path.join(os.path.dirname(__file__), '..', 'resources')
@@ -15,8 +17,8 @@ class DataModel:
     players = []
     characters = []
     settings = {}
-    winner: Player
-    loser: Player
+    winner: Player = None
+    loser: Player = None
 
     def __init__(self):
         self.characters = self.load_characters()
@@ -80,28 +82,43 @@ class DataModel:
         return result
 
     def select_character_for_player(self, player, random_value: int) -> Character:
-        if self.settings['liked_characters'].get() and player is self.loser:
-            return random.choice(player.liked_characters)
+        if self.settings['liked_characters'].get() and self.player_numbers.get() > 1 and player is self.loser:
+            return self.decide_liked(player, random_value)
 
-        if self.settings['disliked_characters'].get() and player is self.winner:
-            print(f"{player.name} disliked characters: {player.disliked_characters}")
-            if random_value < self.dislike_scale.get():
-                return random.choice(self.characters)
-            else:
-                return random.choice(player.disliked_characters)
+        if self.settings['disliked_characters'].get() and self.player_numbers.get() > 1 and player is self.winner:
+            return self.decide_disliked(player, random_value)
 
-        if self.settings['liked_characters'].get() and random_value < self.like_scale.get():
+        if self.settings['liked_characters'].get() and random_value + NORMAL_DECREASE <= self.like_scale.get():
+            print(f"{player.name} - random lucky")
             return random.choice(player.liked_characters)
         else:
+            print(f"{player.name} - random normal")
             return random.choice(self.characters)
 
+    def decide_disliked(self, player, random_value):
+        if random_value <= self.dislike_scale.get():
+            print(f"{player.name} - disliked")
+            return random.choice(player.disliked_characters)
+        else:
+            print(f"{player.name} - normal")
+            return random.choice(self.characters)
+
+    def decide_liked(self, player, random_value):
+        if random_value <= self.like_scale.get():
+            print(f"{player.name} - liked")
+            return random.choice(player.liked_characters)
+        else:
+            print(f"{player.name} - normal")
+            return random.choice(self.characters)
 
     def set_winner(self, winner: Player):
         winner.score += 1
         self.winner = winner
+        print(f"Winner: {winner.name} with {winner.score} points")
 
     def set_loser(self, loser: Player):
         self.loser = loser
+        print(f"Loser: {loser.name}")
 
     def get_settings(self) -> dict:
         return self.settings

@@ -44,7 +44,7 @@ class MainController:
         self.forget_visible()
         self.char_select_frame = CharSelectFrame(master=self.view)
         self.char_select_frame.init_character_cards(self.model.get_characters())
-        self.char_select_frame.bind("<<OnBack>>", lambda _: self.show_setup_frame())
+        self.char_select_frame.bind("<<OnExit>>", lambda _: self.on_exit())
         self.char_select_frame.bind("<<OnContinueChar>>", lambda _: self.continue_char_selection())
         self.view.set_char_select_frame(self.char_select_frame)
 
@@ -52,6 +52,13 @@ class MainController:
         self.forget_visible()
         self.roll_frame = RollFrame(master=self.view)
         self.roll_frame.bind("<<OnRoll>>", lambda _: self.roll_selection())
+        players = self.model.get_players()
+        settings = self.model.get_settings()
+        if settings["disliked_characters"].get():
+            self.roll_frame.insert_loser_card(players)
+        if settings["liked_characters"].get():
+            self.roll_frame.insert_winner_card(players)
+        self.roll_frame.generate_cards(players)
         self.view.set_roll_frame(self.roll_frame)
 
     def on_exit(self):
@@ -74,14 +81,19 @@ class MainController:
             self.view.set_setup_frame(self.setup_frame)
 
     def show_char_select_frame(self):
-        if self.char_select_frame is None:
+        if self.model.get_settings()["liked_characters"].get() or self.model.get_settings()["disliked_characters"].get():
+            if self.char_select_frame is None:
+                player_names = self.setup_frame.get_players()
+                self.model.create_players(player_names)
+                self.setup_char_select()
+            else:
+                self.forget_visible()
+                self.view.set_char_select_frame(self.char_select_frame)
+            self.continue_char_selection()
+        else:
             player_names = self.setup_frame.get_players()
             self.model.create_players(player_names)
-            self.setup_char_select()
-        else:
-            self.forget_visible()
-            self.view.set_char_select_frame(self.char_select_frame)
-        self.continue_char_selection()
+            self.setup_roll_frame()
 
     def forget_visible(self):
         visible_frame = self.view.get_visible_frame()
@@ -115,4 +127,11 @@ class MainController:
             self.setup_roll_frame()
 
     def roll_selection(self):
-        pass
+        winner = self.roll_frame.get_winner()
+        loser = self.roll_frame.get_loser()
+        if loser is not None:
+            self.model.set_loser(loser)
+        if winner is not None:
+            self.model.set_winner(winner)
+        characters = self.model.pick_random_characters()
+        self.roll_frame.update_frame(characters)
