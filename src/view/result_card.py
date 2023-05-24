@@ -37,11 +37,16 @@ class ResultCard(tk.Frame):
 
     def set_player(self, event):
         for card in self.player_cards.values():
-            if card.clicked:
+            if card.clicked and card.player != self.selected_player:
                 card.configure(relief="solid", highlightbackground="blue")
                 self.selected_player = card.player
                 card.clicked = False
                 card.configure(bg=CARD_SELECTED_COLOR)
+            elif card.clicked and card.player == self.selected_player:
+                card.configure(relief="flat", highlightbackground=BG_COLOR)
+                self.selected_player = None
+                card.clicked = False
+                card.configure(bg=BG_COLOR)
             else:
                 card.configure(relief="flat", highlightbackground=BG_COLOR)
 

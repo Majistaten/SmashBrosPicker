@@ -1,6 +1,5 @@
 import tkinter as tk
 import tkinter.ttk as ttk
-from tkinter import messagebox
 
 from src.model.character import Character
 from src.model.player import Player
@@ -212,9 +211,7 @@ class CharSelectFrame(ttk.Frame):
     title_label: ttk.Label
     character_cards = []
 
-    num_columns = 10
-
-    # TODO: insert one frame for each character and insert into char_frame
+    num_columns = 14
 
     def __init__(self, master=None, **kwargs):
         super().__init__(master, **kwargs)
@@ -329,20 +326,16 @@ class RollFrame(ttk.Frame):
         self.loser_card = ResultCard(self.card_frame, "Loser", players)
         self.loser_card.grid(row=0, column=3, rowspan=2, sticky=tk.E)
 
-    def get_winner(self) -> Player:
+    def get_winner(self) -> Player | None:
         if self.winner_card is None:
             return None
         winner = self.winner_card.get_selected_player()
-        print("Winner")
-        print(winner)
         return winner
 
-    def get_loser(self) -> Player:
+    def get_loser(self) -> Player | None:
         if self.loser_card is None:
             return None
         loser = self.loser_card.get_selected_player()
-        print("Loser")
-        print(loser)
         return loser
 
     def update_frame(self, selections: dict[str, Character]):
@@ -383,7 +376,7 @@ class App(tk.Tk):
         self.roll_frame = frame
         frame.setup()
 
-    def get_visible_frame(self) -> ttk.Frame:
+    def get_visible_frame(self) -> ttk.Frame | None:
         for child in self.winfo_children():
             if isinstance(child, (MainFrame, SetupFrame, CharSelectFrame)) and child.winfo_ismapped():
                 return child
